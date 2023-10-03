@@ -1,5 +1,5 @@
-import Image from "next/image";
+"use client";
 
 export default function Home() {
-  return <main className=" text-green-400">Hello World!</main>;
+  return <div className=" container">Labbers</div>;
 }
