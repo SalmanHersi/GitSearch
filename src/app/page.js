@@ -1,7 +1,8 @@
 "use client";
-import Navbar from "./components/navbar";
-import Search from "./components/search";
+import Navbar from "./components/Navbar";
+import Search from "./components/Search";
 import { useState } from "react";
+import UserProfile from "./components/UserProfile";
 
 export default function Home() {
   const [userData, setUserData] = useState(null);
@@ -12,7 +13,7 @@ export default function Home() {
       <Navbar />
       <h3 className="text-center font-semibold">Search for labbers!</h3>
       <Search setUserData={(res) => setUserData(res)} setLoading={setLoading}/>
-      {/* <UserProfile /> */}
+      {userData && <UserProfile userData={userData} />}
     </div>
   );
 }
