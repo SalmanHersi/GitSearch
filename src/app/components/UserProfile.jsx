@@ -1,5 +1,5 @@
 
-
+import Repos from "./Repos";
 const UserProfile = ({ userData }) => {
   return (
     <>
@@ -67,7 +67,7 @@ const UserProfile = ({ userData }) => {
         </div>
       </div>
 
-
+      <Repos reposUrl={userData.repos_url} />
     </>
   );
 };
