@@ -2,11 +2,11 @@ import React from "react";
 
 const navbar = () => {
   return (
-    <div className="flex justify-between items-center">
+    <div className=" flex justify-between items-center p-5">
       <div>
-        <h2>Logo Here</h2>
+        <h2 className=" text-2xl">Labbers</h2>
       </div>
-      <div>Profile</div>
+      <div className=" text-2xl">Profile</div>
     </div>
   );
 };
