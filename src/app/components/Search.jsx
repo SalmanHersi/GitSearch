@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 
-const Search = () => {
+const Search = ({setUserData, setLoading}) => {
   const [query, setQuery] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!query) return;
+    setLoading(true); //Loading function
+    setUserData(null); //No initial data
     try {
       const res = await fetch(`https://api.github.com/users/${query}`);
       const data = await res.json();
@@ -14,10 +16,13 @@ const Search = () => {
       // Check if the user exists
       if (data.message) {
         setError("User not found");
-        return; // Exit the function to prevent further execution
+        return; // Exit
       }
+      setUserData(data); // If no error, fetch data
     } catch (error) {
-      setError(error.message); // Set the error message in state
+      setError(error.message);
+    } finally {
+      setLoading(false); //Remove spinner
     }
   };
 
