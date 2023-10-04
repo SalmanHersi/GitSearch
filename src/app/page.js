@@ -1,6 +1,6 @@
 "use client";
 import Navbar from "./components/navbar";
-import Search from "./components/Search";
+import Search from "./components/search";
 
 export default function Home() {
   return (
