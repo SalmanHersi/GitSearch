@@ -6,7 +6,7 @@ const navbar = () => {
       <div>
         <h2 className=" text-2xl">Labbers</h2>
       </div>
-      <div className=" text-2xl">Profile</div>
+      <div className=" text-2xl">History</div>
     </div>
   );
 };

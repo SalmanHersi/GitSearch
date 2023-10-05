@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Search = ({setUserData, setLoading}) => {
+const Search = ({ setUserData, setLoading }) => {
   const [query, setQuery] = useState("");
   const [error, setError] = useState("");
 
@@ -19,6 +19,7 @@ const Search = ({setUserData, setLoading}) => {
         return; // Exit
       }
       setUserData(data); // If no error, fetch data
+      addToLocalStorage(data, query);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -26,6 +27,19 @@ const Search = ({setUserData, setLoading}) => {
     }
   };
 
+  const addToLocalStorage = (data, username) => {
+    const users = JSON.parse(localStorage.getItem("github-users")) || [];
+    const userexists = users.find((user) => user.id === username);
+    if (userexists) {
+      users.splice(users.indexOf(userexists), 1);
+    }
+    users.unshift({
+      id: username,
+      avatar_url: data.avatar_url,
+      name: data.name,
+      url: data.html_url,
+    });
+  };
   return (
     <div>
       <form
@@ -50,7 +64,7 @@ const Search = ({setUserData, setLoading}) => {
           Search
         </button>
       </form>
-      
+
       {error && (
         <div className="bg-red-100 text-red-700 px-4 py-2 rounded-md mt-2">
           {error}

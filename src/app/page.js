@@ -12,7 +12,7 @@ export default function Home() {
     <div className=" container mx-auto ">
       <Navbar />
       <h3 className="text-center font-semibold">Search for labbers!</h3>
-      <Search setUserData={(res) => setUserData(res)} setLoading={setLoading}/>
+      <Search setUserData={(res) => setUserData(res)} setLoading={setLoading} />
       {userData && <UserProfile userData={userData} />}
     </div>
   );
