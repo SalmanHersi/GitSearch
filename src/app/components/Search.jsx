@@ -1,8 +1,11 @@
+"use client";
 import React, { useState } from "react";
+import { Button, Input, useToast } from "@/app/chakra";
 
 const Search = ({ setUserData, setLoading }) => {
   const [query, setQuery] = useState("");
   const [error, setError] = useState("");
+  const toast = useToast();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +24,14 @@ const Search = ({ setUserData, setLoading }) => {
       setUserData(data); // If no error, fetch data
       addToLocalStorage(data, query);
     } catch (error) {
-      setError(error.message);
+      toast({
+        title: "Error",
+        description: error.message,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      // setError(error.message);
     } finally {
       setLoading(false); //Remove spinner
     }
@@ -29,9 +39,10 @@ const Search = ({ setUserData, setLoading }) => {
 
   const addToLocalStorage = (data, username) => {
     const users = JSON.parse(localStorage.getItem("github-users")) || [];
-    const userexists = users.find((user) => user.id === username);
-    if (userexists) {
-      users.splice(users.indexOf(userexists), 1);
+    const userExists = users.find((user) => user.id === username);
+
+    if (userExists) {
+      users.splice(users.indexOf(userExists), 1);
     }
     users.unshift({
       id: username,
@@ -39,6 +50,8 @@ const Search = ({ setUserData, setLoading }) => {
       name: data.name,
       url: data.html_url,
     });
+
+    localStorage.setItem("github-users", JSON.stringify(users));
   };
   return (
     <div>

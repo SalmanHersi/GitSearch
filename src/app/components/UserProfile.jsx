@@ -9,8 +9,9 @@ const UserProfile = ({ userData }) => {
             src={userData.avatar_url}
             alt={userData.name}
           />
-          <button className="bg-blue-500 text-white py-1 px-4 rounded">
+          <button className="bg-blue-500 text-white rounded px-3">
             <a
+              className=""
               href={userData.html_url}
               target="_blank"
               rel="noopener noreferrer"

@@ -1,35 +1,21 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { Link } from "@chakra-ui/next-js";
+import {
+  Avatar,
+  Box,
+  Flex,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+  VStack,
+  useToast,
+} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 
-const renderUser = (user) => (
-  <div
-    key={user.id}
-    className="flex items-center bg-white bg-opacity-20 w-full hover:bg-opacity-40 rounded p-2 cursor-pointer justify-between"
-  >
-    <div className="flex gap-2 items-center">
-      <imgage
-        className="block w-16 h-16 rounded-full"
-        alt={user.name}
-        src={user.avatar_url}
-      />
-      <div>
-        <p className="font-bold"> {user.name || "User"} </p>
-        <p className="text-sm text-gray-400">{user.id}</p>
-      </div>
-    </div>
-
-    <div className="flex items-center gap-4">
-      <a
-        href={user.url}
-        className="text-sm text-black bg-green-200 px-2 py-1 rounded hover:bg-green-300"
-      >
-        Visit
-      </a>
-    </div>
-  </div>
-);
-
-const History = () => {
+const History = ({ isOpen, onClose }) => {
   const [searchHistory, setSearchHistory] = useState([]);
 
   useEffect(() => {
@@ -37,11 +23,82 @@ const History = () => {
     setSearchHistory(users);
   }, []);
 
+  const handleDeleteUser = (userId) => {
+    const users = JSON.parse(localStorage.getItem("github-users")) || [];
+    const userToDelete = users.find((user) => user.id === userId);
+    if (userToDelete) users.splice(users.indexOf(userToDelete), 1);
+
+    localStorage.setItem("github-users", JSON.stringify(users));
+    setSearchHistory(users);
+    toast({
+      title: "Success",
+      description: "User deleted successfully",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
+  };
+
   return (
-    <div className="p-4">
-      <div className="text-2xl font-bold mb-4">Search History</div>
-      {searchHistory.map(renderUser)}
-    </div>
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent bg={"green.300"}>
+        <ModalHeader>Search History</ModalHeader>
+        <ModalBody>
+          <Text>Users you searched for:</Text>
+          <VStack gap={4} maxHeight={300} overflowY={"auto"} my={4}>
+            {searchHistory.length === 0 && (
+              <Text color={"gray.900"} fontSize={"sm"} fontWeight={"bold"}>
+                No users searched yet
+              </Text>
+            )}
+
+            {searchHistory.map((user) => (
+              <Flex
+                key={user.id}
+                alignItems={"center"}
+                bg={"whiteAlpha.200"}
+                w={"full"}
+                _hover={{ bg: "whiteAlpha.400" }}
+                borderRadius={4}
+                p={2}
+                cursor={"pointer"}
+                justifyContent={"space-between"}
+              >
+                <Flex gap={2} alignItems={"center"}>
+                  <Avatar
+                    display={"block"}
+                    size={"lg"}
+                    name={user.name}
+                    src={user.avatar_url}
+                  />
+                  <Box>
+                    <Text fontWeight={"bold"}> {user.name || "User"} </Text>
+                    <Text fontSize={"sm"} color={"gray.900"}>
+                      {" "}
+                      {user.id}{" "}
+                    </Text>
+                  </Box>
+                </Flex>
+
+                <Flex alignItems={"center"} gap={4} className="">
+                  <Link
+                    href={user.url}
+                    size={"sm"}
+                    color="black"
+                    px={2}
+                    borderRadius={4}
+                    _hover={{ textDecoration: "none" }}
+                  >
+                    Visit
+                  </Link>
+                </Flex>
+              </Flex>
+            ))}
+          </VStack>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
   );
 };
 
