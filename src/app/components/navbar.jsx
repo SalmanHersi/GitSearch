@@ -1,14 +1,15 @@
 import React from "react";
 
-const navbar = () => {
+const Navbar = ({ toggleHistory }) => {
   return (
-    <div className=" flex justify-between items-center p-5">
+    <div className="flex justify-between items-center p-5">
       <div>
-        <h2 className=" text-2xl">Labbers</h2>
+        <h2 className="text-2xl">Labbers</h2>
       </div>
-      <div className=" text-2xl">History</div>
+      <div className="text-2xl cursor-pointer" onClick={toggleHistory}>
+        History
+      </div>
     </div>
   );
 };
-
-export default navbar;
+export default Navbar;

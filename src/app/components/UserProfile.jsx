@@ -1,4 +1,3 @@
-
 import Repos from "./Repos";
 const UserProfile = ({ userData }) => {
   return (
@@ -11,7 +10,11 @@ const UserProfile = ({ userData }) => {
             alt={userData.name}
           />
           <button className="bg-blue-500 text-white py-1 px-4 rounded">
-            <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
+            <a
+              href={userData.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               View Profile
             </a>
           </button>
@@ -36,9 +39,7 @@ const UserProfile = ({ userData }) => {
           <h2 className="text-2xl font-bold mt-4 text-blue-400">
             {userData.name}
           </h2>
-          <p className="text-md font-bold text-blue-500">
-            {userData.bio}
-          </p>
+          <p className="text-md font-bold text-blue-500">{userData.bio}</p>
 
           <div className="mt-2">
             <p className="text-md">
@@ -50,9 +51,15 @@ const UserProfile = ({ userData }) => {
               {userData.location || "Not Specified"}
             </p>
             <p className="text-md">
-              <span className="font-bold text-blue-200 mr-1">Blog / Website:</span>
+              <span className="font-bold text-blue-200 mr-1">
+                Blog / Website:
+              </span>
               {userData.blog ? (
-                <a href={userData.blog} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={userData.blog}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {userData.blog}
                 </a>
               ) : (
@@ -60,7 +67,9 @@ const UserProfile = ({ userData }) => {
               )}
             </p>
             <p className="text-md">
-              <span className="font-bold text-blue-200 mr-1">Member Since:</span>
+              <span className="font-bold text-blue-200 mr-1">
+                Member Since:
+              </span>
               {new Date(userData.created_at).toLocaleDateString()}
             </p>
           </div>
