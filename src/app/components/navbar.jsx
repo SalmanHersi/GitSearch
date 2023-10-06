@@ -1,4 +1,7 @@
 import React from "react";
+import { Box, Button, Flex, useDisclosure } from "@/app/chakra";
+import { Image } from "@/app/global";
+import History from "./History";
 
 const Navbar = ({ toggleHistory }) => {
   return (
