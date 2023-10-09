@@ -1,12 +1,79 @@
 import React, { useState, useEffect } from "react";
 
+const useDebounce = (value, delay) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+};
+
 const Search = ({ setUserData, setLoading }) => {
   const [query, setQuery] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  //For lucky button
-  const randomUsernames = ["knadh", "JayantGoel001", "paulirish", "tonymorris", "alysonla", "LeaVerou", "jlord", "silentbicycle", "kennethreitz", "jashkenas", "addyosmani", "sebastienros", "SaraSoueidan", "visionmedia", "c9s", "fabpot", "weierophinney", "springmeyer", "dcramer", "jeromeetienne", "ornicar", "davglass", "postmodern", "tmcw", "isaacs", "substack", "fsouza", "taylorotwell", "yihui", "josevalim", "kevinsawicki", "jordansissel", "kripken", "sferik", "Raynos", "Shougo", "ekmett", "svenfuchs", "radar", "TooTallNate", "dominictarr", "davidfowl", "drnic", "snoyberg", "kohsuke", "agentzh", "paulmillr", "ayende", "tokuhirom", "aheckmann"]; //Popular users
+  const [suggestions, setSuggestions] = useState([]);
+  const debouncedQuery = useDebounce(query, 300);
+  const randomUsernames = [
+    "knadh",
+    "JayantGoel001",
+    "paulirish",
+    "tonymorris",
+    "alysonla",
+    "LeaVerou",
+    "jlord",
+    "silentbicycle",
+    "kennethreitz",
+    "jashkenas",
+    "addyosmani",
+    "sebastienros",
+    "SaraSoueidan",
+    "visionmedia",
+    "c9s",
+    "fabpot",
+    "weierophinney",
+    "springmeyer",
+    "dcramer",
+    "jeromeetienne",
+    "ornicar",
+    "davglass",
+    "postmodern",
+    "tmcw",
+    "isaacs",
+    "substack",
+    "fsouza",
+    "taylorotwell",
+    "yihui",
+    "josevalim",
+    "kevinsawicki",
+    "jordansissel",
+    "kripken",
+    "sferik",
+    "Raynos",
+    "Shougo",
+    "ekmett",
+    "svenfuchs",
+    "radar",
+    "TooTallNate",
+    "dominictarr",
+    "davidfowl",
+    "drnic",
+    "snoyberg",
+    "kohsuke",
+    "agentzh",
+    "paulmillr",
+    "ayende",
+    "tokuhirom",
+    "aheckmann",
+  ]; //Popular users
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -18,7 +85,31 @@ const Search = ({ setUserData, setLoading }) => {
     return () => clearTimeout(timerId);
   }, [query]);
 
-  
+  useEffect(() => {
+    if (debouncedQuery) {
+      fetchSuggestions(debouncedQuery).then((suggestions) => {
+        setSuggestions(suggestions);
+      });
+    } else {
+      setSuggestions([]);
+    }
+  }, [debouncedQuery]);
+
+  const fetchSuggestions = async (query) => {
+    try {
+      const res = await fetch(`https://api.github.com/search/users?q=${query}`);
+      const data = await res.json();
+      return data.items || [];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  };
+
+  const selectSuggestion = (username) => {
+    setQuery(username);
+    setSuggestions([]);
+  };
 
   const performSearch = async (searchTerm) => {
     setLoading(true);
@@ -41,7 +132,6 @@ const Search = ({ setUserData, setLoading }) => {
     }
   };
 
-  //Lucky button
   const getRandomUsername = () => {
     const randomIndex = Math.floor(Math.random() * randomUsernames.length);
     return randomUsernames[randomIndex];
@@ -51,11 +141,10 @@ const Search = ({ setUserData, setLoading }) => {
     const randomUsername = getRandomUsername();
     setQuery(randomUsername);
   };
-  
+
   const addToLocalStorage = (data, username) => {
     const users = JSON.parse(localStorage.getItem("github-users")) || [];
     const userExists = users.find((user) => user.id === username);
-
     if (userExists) {
       users.splice(users.indexOf(userExists), 1);
     }
@@ -65,7 +154,6 @@ const Search = ({ setUserData, setLoading }) => {
       name: data.name,
       url: data.html_url,
     });
-
     localStorage.setItem("github-users", JSON.stringify(users));
   };
 
@@ -96,6 +184,19 @@ const Search = ({ setUserData, setLoading }) => {
             setQuery(e.target.value);
           }}
         />
+        {suggestions.length > 0 && (
+          <ul className="bg-white border rounded-md  mt-2 w-full max-h-40 overflow-auto">
+            {suggestions.map((user) => (
+              <li
+                key={user.id}
+                onClick={() => selectSuggestion(user.login)}
+                className="p-2 cursor-pointer hover:bg-gray-200"
+              >
+                {user.login}
+              </li>
+            ))}
+          </ul>
+        )}
         <div className="flex space-x-3">
           <button
             type="submit"
@@ -123,7 +224,6 @@ const Search = ({ setUserData, setLoading }) => {
           </button>
         </div>
       </form>
-
       {error && (
         <div className="bg-red-100 text-red-700 px-4 py-2 rounded-md mt-2">
           {error}
