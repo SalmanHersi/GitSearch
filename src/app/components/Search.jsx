@@ -5,6 +5,9 @@ const Search = ({ setUserData, setLoading }) => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  //For lucky button
+  const randomUsernames = ["knadh", "JayantGoel001", "paulirish", "tonymorris", "alysonla", "LeaVerou", "jlord", "silentbicycle", "kennethreitz", "jashkenas", "addyosmani", "sebastienros", "SaraSoueidan", "visionmedia", "c9s", "fabpot", "weierophinney", "springmeyer", "dcramer", "jeromeetienne", "ornicar", "davglass", "postmodern", "tmcw", "isaacs", "substack", "fsouza", "taylorotwell", "yihui", "josevalim", "kevinsawicki", "jordansissel", "kripken", "sferik", "Raynos", "Shougo", "ekmett", "svenfuchs", "radar", "TooTallNate", "dominictarr", "davidfowl", "drnic", "snoyberg", "kohsuke", "agentzh", "paulmillr", "ayende", "tokuhirom", "aheckmann"]; //Popular users
+
   useEffect(() => {
     const timerId = setTimeout(() => {
       if (query) {
@@ -14,6 +17,8 @@ const Search = ({ setUserData, setLoading }) => {
 
     return () => clearTimeout(timerId);
   }, [query]);
+
+  
 
   const performSearch = async (searchTerm) => {
     setLoading(true);
@@ -36,6 +41,17 @@ const Search = ({ setUserData, setLoading }) => {
     }
   };
 
+  //Lucky button
+  const getRandomUsername = () => {
+    const randomIndex = Math.floor(Math.random() * randomUsernames.length);
+    return randomUsernames[randomIndex];
+  };
+
+  const handleLuckyButtonClick = () => {
+    const randomUsername = getRandomUsername();
+    setQuery(randomUsername);
+  };
+  
   const addToLocalStorage = (data, username) => {
     const users = JSON.parse(localStorage.getItem("github-users")) || [];
     const userExists = users.find((user) => user.id === username);
@@ -97,6 +113,13 @@ const Search = ({ setUserData, setLoading }) => {
             style={{ opacity: isLoading ? 0.5 : 1 }}
           >
             Clear Search
+          </button>
+          <button
+            type="button"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={handleLuckyButtonClick}
+          >
+            I'm Feeling Lucky
           </button>
         </div>
       </form>
