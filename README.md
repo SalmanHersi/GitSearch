@@ -14,9 +14,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First install the dependencies
 
 ```Bash
-npm instal
+npm install
 ```
 Dependencies:
+```Bash
 @chakra-ui/icons: ^2.1.1,
 @chakra-ui/next-js: ^2.1.5,
 @chakra-ui/react: ^2.8.1,
@@ -26,6 +27,7 @@ framer-motion: ^10.16.4,
 next: latest,
 react: latest,
 react-dom: latest
+```
 
 Then run the development server:
 
