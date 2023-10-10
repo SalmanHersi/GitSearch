@@ -8,6 +8,7 @@ const Search = ({ setUserData, setLoading }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const debouncedQuery = useDebounce(query, 300);
+  
   const randomUsernames = [
     "knadh",
     "JayantGoel001",
@@ -152,7 +153,8 @@ const Search = ({ setUserData, setLoading }) => {
   };
 
   return (
-    <div>
+    <div className=" mt-52">
+        <h3 className="text-center font-semibold">Search for labbers!</h3>
       <form
         onSubmit={(e) => {
           e.preventDefault();

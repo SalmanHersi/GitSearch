@@ -7,7 +7,13 @@ const Navbar = () => {
   return (
     <div className="flex justify-between items-center p-5">
       <div>
-        <h2 className="text-2xl">Labbers</h2>
+        <h2 className="text-2xl">GitSearch</h2>
+      </div>
+      <div>
+        <button className=" rounded-md bg-green-300 p-2">
+        <a href="http://localhost:3000/trending">🔥 Trending Users</a>
+        </button>
+
       </div>
       <Box>
         <Button
