@@ -11,9 +11,25 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First install the dependencies
 
-```bash
+```Bash
+npm instal
+```
+Dependencies:
+@chakra-ui/icons: ^2.1.1,
+@chakra-ui/next-js: ^2.1.5,
+@chakra-ui/react: ^2.8.1,
+@emotion/react: ^11.11.1,
+@emotion/styled: ^11.11.0,
+framer-motion: ^10.16.4,
+next: latest,
+react: latest,
+react-dom: latest
+
+Then run the development server:
+
+```Bash
 npm run dev
 # or
 yarn dev
@@ -21,18 +37,6 @@ yarn dev
 pnpm dev
 # or
 bun dev
-```
-
-```dependencies
-    "@chakra-ui/icons": "^2.1.1",
-    "@chakra-ui/next-js": "^2.1.5",
-    "@chakra-ui/react": "^2.8.1",
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "framer-motion": "^10.16.4",
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest"
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
