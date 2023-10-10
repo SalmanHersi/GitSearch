@@ -18,7 +18,8 @@
     "framer-motion": "^10.16.4",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-router-dom": "^6.16.0"
   },
   "devDependencies": {
     "autoprefixer": "latest",

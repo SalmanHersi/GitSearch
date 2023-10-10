@@ -15,6 +15,12 @@ const Navbar = () => {
         </button>
 
       </div>
+      <div>
+        <button className=" rounded-md bg-green-300 p-2">
+        <a href="http://localhost:3000/repos">🗄️ Find Repos</a>
+        </button>
+
+      </div>
       <Box>
         <Button
           size="md"

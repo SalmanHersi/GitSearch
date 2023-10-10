@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const FilteredRepos = () => {
   const [repos, setRepos] = useState([]);
-  const [topic, setTopic] = useState(''); // Holds the topic user inputs
+  const [topic, setTopic] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  // Predefined popular tech terms.
+  const popularTerms = ["React", "JavaScript", "Blockchain", "Crypto", "Machine Learning", "AI", "Cybersecurity", "Cloud Computing", "NFT", "Metaverse"];
 
   const fetchRepos = async () => {
     setLoading(true);
@@ -27,15 +30,34 @@ const FilteredRepos = () => {
   };
 
   const handleSearchSubmit = (e) => {
-    e.preventDefault(); // Prevent page reload on form submit
+    e.preventDefault();
     if (topic) {
       fetchRepos();
     }
   };
 
+  // Function to handle clicking popular term buttons
+  const handlePopularTermClick = (term) => {
+    setTopic(term);
+    fetchRepos();
+  };
+
   return (
     <div className="p-8">
       <h2 className="text-3xl font-bold mb-6">Search GitHub Repos by Topic</h2>
+      
+      {/* Popular Search Terms Buttons */}
+      <div className="mb-6">
+        {popularTerms.map((term) => (
+          <button 
+            key={term}
+            onClick={() => handlePopularTermClick(term)}
+            className="bg-gray-200 p-2 m-1 rounded"
+          >
+            {term}
+          </button>
+        ))}
+      </div>
       
       {/* Search Form */}
       <form onSubmit={handleSearchSubmit} className="mb-6">
