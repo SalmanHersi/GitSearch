@@ -10,10 +10,13 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   console.log(userData);
   return (
-    <div className=" container mx-auto ">
+    <div className="">
+ <div className=" container mx-auto ">
       <Navbar />
       <Search setUserData={(res) => setUserData(res)} setLoading={setLoading} />
       {userData && <UserProfile userData={userData} />}
     </div>
+    </div>
+   
   );
 }

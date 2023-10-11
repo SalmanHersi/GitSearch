@@ -28,12 +28,12 @@ const Repos = ({ reposUrl }) => {
 
   return (
     <>
-      <h1 className="text-center text-blue-400 font-bold text-3xl mt-4">
+      <h1 className="text-center text-white font-bold text-3xl mt-4">
         Browse repos
       </h1>
       {loading && (
         <div className="flex justify-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-orange-500"></div>
         </div>
       )}
 
@@ -44,12 +44,12 @@ const Repos = ({ reposUrl }) => {
           return (
             <div
               key={repo.id}
-              className="bg-blue-200 hover:bg-blue-300 my-4 px-10 py-4 flex justify-between items-center rounded-lg transition-all ease-in-out duration-300"
+              className="bg-white hover:bg-orange-100 text-black my-4 px-10 py-4 flex justify-between items-center rounded-lg transition-all ease-in-out duration-300"
             >
               <div className="flex flex-col">
                 <a
                   href={repo.html_url}
-                  className="font-bold text-md text-blue-600"
+                  className="font-bold text-md text-orange-600"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

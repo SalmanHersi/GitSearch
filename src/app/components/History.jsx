@@ -42,7 +42,7 @@ const History = ({ isOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent bg={"green.300"}>
+      <ModalContent bg={"white"}>
         <ModalHeader>Search History</ModalHeader>
         <ModalBody>
           <Text>Click outside this box exit</Text>
@@ -82,11 +82,11 @@ const History = ({ isOpen, onClose }) => {
                   </Box>
                 </Flex>
 
-                <Flex alignItems={"center"} gap={4} className="">
+                <Flex alignItems={"center"} gap={4} className=" shadow-orange-50">
                   <Link
                     href={user.url}
                     size={"sm"}
-                    color="black"
+                    color="orange.400"
                     px={2}
                     borderRadius={4}
                     _hover={{ textDecoration: "none" }}

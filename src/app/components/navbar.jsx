@@ -10,22 +10,21 @@ const Navbar = () => {
       <div className=" flex justify-center items-center">
         <a href="http://localhost:3000/
         "> <img src="/imgs/logo4.png" alt="GitSearch Logo" className="w-32"/></a>
-       <a href="http://localhost:3000/"><h3 className=" text-3xl">GitSearch</h3></a>
+       <a href="http://localhost:3000/"><h3 className=" text-3xl text-white">GitSearch</h3></a>
       </div>
       <div>
-        <button className="rounded-md bg-green-300 p-2">
+        <button className="rounded-md py-2 px-4 text-gray-100 bg-gray-600 hover:bg-gray-700 focus:outline-none">
           <a href="http://localhost:3000/trending">🔥 Trending Users</a>
         </button>
       </div>
       <div>
-        <button className="rounded-md bg-green-300 p-2">
+        <button className="rounded-md py-2 px-4 text-gray-100 bg-gray-600 hover:bg-gray-700 focus:outline-none">
           <a href="http://localhost:3000/repos">🗄️ Find Repos</a>
         </button>
       </div>
       <Box>
         <Button
-          size="md"
-          className="bg-green-300 hover:bg-green-500"
+          className="rounded-md py-2 px-4 text-gray-100 bg-gray-600 hover:bg-gray-700 focus:outline-none"
           onClick={onOpen}
         >
           Search History

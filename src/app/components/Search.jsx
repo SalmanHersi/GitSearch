@@ -153,8 +153,8 @@ const Search = ({ setUserData, setLoading }) => {
   };
 
   return (
-    <div className=" mt-52">
-        <h3 className="text-center font-semibold">Search for labbers!</h3>
+    <div className=" mt-32">
+        <h3 className="text-center font-semibold text-white text-2xl">Search for labbers!</h3>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -165,7 +165,7 @@ const Search = ({ setUserData, setLoading }) => {
         <input
           type="text"
           placeholder="Type a username"
-          className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 placeholder:text-center focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+          className="mt-1 block w-1/2 px-3 py-3 bg-white border border-orange-300 rounded-md text-sm shadow-lg placeholder-slate-400 placeholder:text-center focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 "
           value={query}
           onChange={(e) => {
             setError("");
@@ -173,7 +173,7 @@ const Search = ({ setUserData, setLoading }) => {
           }}
         />
         {suggestions.length > 0 && (
-          <ul className="bg-white border rounded-md  mt-2 w-full max-h-40 overflow-auto">
+          <ul className="bg-white border rounded-md  mt-2 w-full max-h-40 overflow-auto w-1/2">
             {suggestions.map((user) => (
               <li
                 key={user.id}

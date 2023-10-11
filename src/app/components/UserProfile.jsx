@@ -2,14 +2,14 @@ import Repos from "./Repos";
 const UserProfile = ({ userData }) => {
   return (
     <>
-      <div className="my-16 border-2 border-blue-500 rounded-lg p-8">
+      <div className="my-16 border-2 border-orange-500 bg-white rounded-lg p-8 text-black">
         <div className="flex gap-5">
           <img
             className="w-24 h-24 rounded-full"
             src={userData.avatar_url}
             alt={userData.name}
           />
-          <button className="bg-blue-500 text-white rounded px-3">
+          <button className="bg-orange-500 text-white rounded px-1 inline-block">
             <a
               className=""
               href={userData.html_url}
@@ -21,7 +21,7 @@ const UserProfile = ({ userData }) => {
           </button>
         </div>
 
-        <div className="ml-8 self-start">
+        <div className="ml-8 self-start text-black mt-3">
           <div className="flex gap-4">
             <span className="text-orange text-sm">
               Public Repos: {userData.public_repos}
@@ -37,22 +37,22 @@ const UserProfile = ({ userData }) => {
             </span>
           </div>
 
-          <h2 className="text-2xl font-bold mt-4 text-blue-400">
+          <h2 className="text-2xl font-bold mt-4 text-black">
             {userData.name}
           </h2>
-          <p className="text-md font-bold text-blue-500">{userData.bio}</p>
+          <p className="text-md font-bold text-orange-500">{userData.bio}</p>
 
-          <div className="mt-2">
-            <p className="text-md">
-              <span className="font-bold text-blue-200 mr-1">Company:</span>
+          <div className="mt-2 text-black">
+            <p className="text-md text-black">
+              <span className="font-bold mr-1">Company:</span>
               {userData.company || "Not Specified"}
             </p>
-            <p className="text-md">
-              <span className="font-bold text-blue-200 mr-1">Location:</span>
+            <p className="text-md text-black">
+              <span className="font-bold text-black mr-1">Location:</span>
               {userData.location || "Not Specified"}
             </p>
             <p className="text-md">
-              <span className="font-bold text-blue-200 mr-1">
+              <span className="font-bold text-black mr-1">
                 Blog / Website:
               </span>
               {userData.blog ? (
@@ -67,8 +67,8 @@ const UserProfile = ({ userData }) => {
                 "Not Specified"
               )}
             </p>
-            <p className="text-md">
-              <span className="font-bold text-blue-200 mr-1">
+            <p className="text-md text-black">
+              <span className="font-bold text-black mr-1">
                 Member Since:
               </span>
               {new Date(userData.created_at).toLocaleDateString()}

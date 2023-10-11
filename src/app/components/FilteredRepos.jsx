@@ -44,7 +44,7 @@ const FilteredRepos = () => {
 
   return (
     <div className="p-8">
-      <h2 className="text-3xl font-bold mb-6">Search GitHub Repos by Topic</h2>
+      <h2 className="text-3xl font-bold mb-6 text-white">Search GitHub Repos by Topic</h2>
       
       {/* Popular Search Terms Buttons */}
       <div className="mb-6">

@@ -48,14 +48,14 @@ const Popular = () => {
 
   return (
     <div className="p-8">
-      <h2 className="text-3xl font-bold mb-6">Top 10 GitHub Users</h2>
-      <label htmlFor="userFilter" className="mb-4 block">Filter Users by: </label>
+      <h2 className="text-3xl font-bold mb-6 text-white">Top 10 GitHub Users</h2>
+      <label htmlFor="userFilter" className="mb-4 block text-white">Filter Users by: </label>
       <select id="userFilter" value={userFilter} onChange={handleUserFilterChange} className="mb-6 border p-2">
         <option value="followers">Most Followers</option>
         <option value="following">Most Following</option>
         <option value="repos">Most Repos</option>
       </select>
-      <label htmlFor="sortType" className="mb-4 block">Sort Repos by: </label>
+      <label htmlFor="sortType" className="mb-4 block text-white">Sort Repos by: </label>
       <select id="sortType" value={sortType} onChange={handleSortChange} className="mb-6 border p-2">
         <option value="stars">Most Starred</option>
         <option value="forks">Most Forked</option>
