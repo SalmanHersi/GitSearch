@@ -10,16 +10,16 @@ const UserProfile = ({ userData }) => {
             src={userData.avatar_url}
             alt={userData.name}
           />
-          <button className="bg-orange-500 text-white rounded px-1 inline-block">
+           
             <a
-              className=""
+              className=" text-center my-auto font-semibold text-orange-500 p-3 bg-slate-800 rounded-lg shadow-lg"
               href={userData.html_url}
               target="_blank"
               rel="noopener noreferrer"
             >
               View Profile
             </a>
-          </button>
+          
         </div>
 
         <div className="ml-8 self-start text-black mt-3">

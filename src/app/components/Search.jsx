@@ -154,7 +154,7 @@ const Search = ({ setUserData, setLoading }) => {
 
   return (
     <div className=" mt-32">
-        <h3 className="text-center font-semibold text-white text-2xl">Search for labbers!</h3>
+        <h3 className="text-center font-semibold text-white text-2xl">Search for Users!</h3>
       <form
         onSubmit={(e) => {
           e.preventDefault();
