@@ -1,7 +1,6 @@
 "use client";
 import Navbar from "./components/Navbar";
 import Search from "./components/Search";
-import Popular from "./components/Popular";
 import { useState } from "react";
 import UserProfile from "./components/UserProfile";
 
@@ -11,7 +10,7 @@ export default function Home() {
   console.log(userData);
   return (
     <div className="">
- <div className=" container mx-auto ">
+ <div className=" container m-auto ">
       <Navbar />
       <Search setUserData={(res) => setUserData(res)} setLoading={setLoading} />
       {userData && <UserProfile userData={userData} />}

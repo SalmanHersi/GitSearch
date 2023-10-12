@@ -43,16 +43,16 @@ const FilteredRepos = () => {
   };
 
   return (
-    <div className="p-8">
-      <h2 className="text-3xl font-bold mb-6 text-white">Search GitHub Repos by Topic</h2>
+    <div className="p-3 md:p-8">
+      <h2 className="text-3xl font-bold  md:mb-3 text-white">Search GitHub Repos by Topic</h2>
       
       {/* Popular Search Terms Buttons */}
-      <div className="mb-6">
+      <div className="invisible lg:visible md:mb-6">
         {popularTerms.map((term) => (
           <button 
             key={term}
             onClick={() => handlePopularTermClick(term)}
-            className="bg-gray-200 p-2 m-1 rounded"
+            className="bg-gray-200 p-2 md:m-1 rounded"
           >
             {term}
           </button>
@@ -60,7 +60,7 @@ const FilteredRepos = () => {
       </div>
       
       {/* Search Form */}
-      <form onSubmit={handleSearchSubmit} className="mb-6">
+      <form onSubmit={handleSearchSubmit} className="mb-6 ">
         <input 
           type="text" 
           value={topic}

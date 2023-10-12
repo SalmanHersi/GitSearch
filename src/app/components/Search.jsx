@@ -185,7 +185,7 @@ const Search = ({ setUserData, setLoading }) => {
             ))}
           </ul>
         )}
-        <div className="flex space-x-3">
+        <div className="flex flex-col gap-4  md:flex-row md:gap-3">
           <button
             type="submit"
             className="bg-green-200 rounded-md px-4 py-1"
