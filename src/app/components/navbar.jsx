@@ -25,7 +25,7 @@ const Navbar = () => {
       </div>
       <Box>
         <Button
-          className="rounded-md py-2 px-4 text-gray-100 bg-gray-600 hover:bg-gray-700 focus:outline-none"
+          className="rounded-md py-2 px-4 text-gray-100 bg-orange-500 hover:bg-gray-700 focus:outline-none"
           onClick={onOpen}
         >
           Search History

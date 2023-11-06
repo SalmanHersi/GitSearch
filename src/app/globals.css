@@ -40,3 +40,19 @@ html {
 body {
   background: #202020;
 }
+
+/* Add this within your CSS file */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  border-top-color: #3498db;
+  -webkit-animation: spin 1.5s linear infinite;
+  animation: spin 1.5s linear infinite;
+}

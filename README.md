@@ -1,5 +1,11 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+GitSearch - A dynamic Github search web app
+
+![App main photo](public/imgs/png4.png)
+![History feature](public/imgs/png2.png)
+![App gif](public/imgs/gif1.gif)
+
 ## Getting Started
 
 First, run the development server:
